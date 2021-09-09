@@ -3,13 +3,41 @@ import styled from 'styled-components'
 import logo from '../assets/logo.svg'
 import { FaBars } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
+// from the utils setup
 import { links } from '../utils/constants'
 import CartButtons from './CartButtons'
 import { useProductsContext } from '../context/products_context'
 import { useUserContext } from '../context/user_context'
 
 const Nav = () => {
-  return <h4>navbar</h4>
+  return (
+    <NavContainer>
+      {/* header and image */}
+      <div className='nav-center'>
+        <div className='nav-header'>
+          <Link to='/'>
+            <img src={logo} alt='decor depot' />
+          </Link>
+          <button type='button' className='nav-toggle'>
+            <FaBars />
+          </button>
+        </div>
+        <ul className='nav-links'>
+          {links.map((link) => {
+            // grabbing the following from link object
+            // point to url and show text
+            const { text, id, url } = link
+            return (
+              <li key={id}>
+                <Link to={url}>{text}</Link>
+              </li>
+            )
+          })}
+        </ul>
+        <CartButtons />
+      </div>
+    </NavContainer>
+  )
 }
 
 const NavContainer = styled.nav`
