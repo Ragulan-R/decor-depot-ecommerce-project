@@ -10,7 +10,11 @@ import CartButtons from './CartButtons'
 import { useUserContext } from '../context/user_context'
 
 const Sidebar = () => {
-  const isOpen = true
+  // checking if we are accessing the state and 2 functions
+  const data = useProductsContext()
+  console.log(data)
+
+  const isOpen = false
 
   return (
     <SidebarContainer>
