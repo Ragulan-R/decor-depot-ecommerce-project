@@ -14,6 +14,7 @@ import {
   GET_SINGLE_PRODUCT_ERROR,
 } from '../actions'
 
+// hot reload issue with react 17, update react, react-dom, react-scripts in package.json, delete node modules and reinstall
 // creating that intial property
 const initialState = {
   isSidebarOpen: false,

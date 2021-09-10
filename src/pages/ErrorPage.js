@@ -1,8 +1,19 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+// making the error page height be the whole page in index.css
 const ErrorPage = () => {
-  return <h4>error page</h4>
+  return (
+    <Wrapper className='page-100'>
+      <section>
+        <h1>404</h1>
+        <h3>Sorry this page can't be found</h3>
+        <Link to='/' className='btn'>
+          Back Home
+        </Link>
+      </section>
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled.main`
