@@ -41,6 +41,8 @@ export const services = [
   },
 ]
 
+// for all products, array of objects
 export const products_url = 'https://course-api.com/react-store-products'
 
+// for specific products
 export const single_product_url = `https://course-api.com/react-store-single-product?id=`

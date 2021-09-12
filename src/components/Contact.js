@@ -8,9 +8,10 @@ const Contact = () => {
         <h3>Subscribe to our weekly newsletter and get 10% off</h3>
         <div className='content'>
           <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Beatae
-            odit architecto magnam voluptas nobis ex quod dolorem sed ipsa?
-            Suscipit!
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam
+            quidem amet vitae perspiciatis, eos iste dicta fugit sapiente sunt
+            ipsam molestiae voluptatum impedit voluptas natus pariatur mollitia
+            ullam neque quae.
           </p>
           <form
             action='https://formspree.io/f/mdoybnrd'

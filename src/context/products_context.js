@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useContext, useEffect, useReducer } from 'react'
 // importing product reducer to pass into products provider
 import reducer from '../reducers/products_reducer'
+// passing url and just renaming it
 import { products_url as url } from '../utils/constants'
 import {
   SIDEBAR_OPEN,
@@ -24,6 +25,7 @@ const ProductsContext = React.createContext()
 
 // wrap whole app in products provide an use useReducer
 // intial state is just an empty object
+// setup useEffect in products context to fetch once instead of home page and product page
 export const ProductsProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
 
@@ -35,6 +37,15 @@ export const ProductsProvider = ({ children }) => {
   const closeSidebar = () => {
     dispatch({ type: SIDEBAR_CLOSE })
   }
+
+  const fetchProducts = async (url) => {
+    const response = await axios.get(url)
+    console.log(response)
+  }
+
+  useEffect(() => {
+    fetchProducts(url)
+  }, [])
 
   // invoking function with useEffect
   // useEffect(() => {
