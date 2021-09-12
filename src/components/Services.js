@@ -1,9 +1,40 @@
 import React from 'react'
 import styled from 'styled-components'
+// importing array of services
 import { services } from '../utils/constants'
 
 const Services = () => {
-  return <h4>services </h4>
+  return (
+    <Wrapper>
+      <div className='section-center'>
+        <article className='header'>
+          <h3>
+            Beautifully crafted <br /> decor built for you
+          </h3>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis
+            adipisci saepe illo, dicta, eius asperiores officiis accusamus cum
+            necessitatibus deserunt debitis cupiditate, placeat modi labore
+            repellat eos veniam vel officia.
+          </p>
+        </article>
+        {/* control + space to get the suggestion back */}
+        <div className='services-center'>
+          {services.map((service) => {
+            // what properties do i want
+            const { id, icon, title, text } = service
+            return (
+              <article key={id} className='service'>
+                <span className='icon'>{icon}</span>
+                <h4>{title}</h4>
+                <p>{text}</p>
+              </article>
+            )
+          })}
+        </div>
+      </div>
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled.section`
