@@ -25,6 +25,9 @@ const initialState = {
   products: [],
   // will be pulled out from the actual reducer, 1) get all products, pass in as payload, and in reducer i can pull them out
   featured_products: [],
+  single_product_loading: false,
+  single_product_error: false,
+  single_product: {},
 }
 
 const ProductsContext = React.createContext()
@@ -55,6 +58,19 @@ export const ProductsProvider = ({ children }) => {
       dispatch({ type: GET_PRODUCTS_SUCCESS, payload: products })
     } catch (error) {
       dispatch({ type: GET_PRODUCTS_ERROR })
+    }
+  }
+
+  // fetching single product information from
+  const fetchSingleProduct = async (url) => {
+    dispatch({ type: GET_SINGLE_PRODUCT_BEGIN })
+    try {
+      const response = await axios.get(url)
+      const singleProduct = response.data
+      // payload will be the variable that was just setup
+      dispatch({ type: GET_SINGLE_PRODUCT_SUCCESS, payload: singleProduct })
+    } catch (error) {
+      dispatch({ type: GET_SINGLE_PRODUCT_ERROR })
     }
   }
 
