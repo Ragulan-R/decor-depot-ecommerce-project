@@ -17,8 +17,14 @@ import {
 
 // hot reload issue with react 17, update react, react-dom, react-scripts in package.json, delete node modules and reinstall
 // creating that intial property
+// need to handle loading(single product, and all products), errors
 const initialState = {
   isSidebarOpen: false,
+  products_loading: false,
+  products_error: false,
+  products: [],
+  // will be pulled out from the actual reducer, 1) get all products, pass in as payload, and in reducer i can pull them out
+  featured_products: [],
 }
 
 const ProductsContext = React.createContext()
@@ -38,9 +44,18 @@ export const ProductsProvider = ({ children }) => {
     dispatch({ type: SIDEBAR_CLOSE })
   }
 
+  // dispatch loading and need to setup if function in the products reducer
+  // handle an error
+  // handle successful loading
   const fetchProducts = async (url) => {
-    const response = await axios.get(url)
-    console.log(response)
+    dispatch({ type: GET_PRODUCTS_BEGIN })
+    try {
+      const response = await axios.get(url)
+      const products = response.data
+      dispatch({ type: GET_PRODUCTS_SUCCESS, payload: products })
+    } catch (error) {
+      dispatch({ type: GET_PRODUCTS_ERROR })
+    }
   }
 
   useEffect(() => {
