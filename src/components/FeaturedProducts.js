@@ -6,8 +6,37 @@ import Error from './Error'
 import Loading from './Loading'
 import Product from './Product'
 
+// look for loading, showcase error if any, showcase products
+// pulling down object and giving it an alias, coming from useproduct context
 const FeaturedProducts = () => {
-  return <h4>featured products</h4>
+  const {
+    products_loading: loading,
+    products_error: error,
+    featured_products: featured,
+  } = useProductsContext()
+
+  // if im loading, display loading, if error display error, if i grab products display products
+  if (loading) {
+    return <Loading />
+  }
+  if (error) {
+    return <Error />
+  }
+  return (
+    <Wrapper className='section'>
+      <div className='title'>
+        <h2>Featured Products</h2>
+        <div className='underline'></div>
+      </div>
+      <div className='section-center featured'>
+        {/* iterating over the featured array */}
+        {/* featured.slice(0,3).map... so grabs items with index 0,1,2 */}
+        {featured.map((product) => {
+          return <Product key={product.id} {...product} />
+        })}
+      </div>
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled.section`
