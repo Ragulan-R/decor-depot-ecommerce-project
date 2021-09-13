@@ -16,7 +16,8 @@ const Product = ({ image, name, price, id }) => {
       </div>
       <footer>
         <h5>{name}</h5>
-        <p>${price}</p>
+        {/* price /100 converting everything into cents because payment processors eg stripe take the smaller unit */}
+        <p>{formatPrice(price)}</p>
       </footer>
     </Wrapper>
   )
