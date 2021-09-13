@@ -86,7 +86,9 @@ export const ProductsProvider = ({ children }) => {
   // passing function and state, because we need to know if sidebar is open or closed
   // get into js world and then object
   return (
-    <ProductsContext.Provider value={{ ...state, openSidebar, closeSidebar }}>
+    <ProductsContext.Provider
+      value={{ ...state, openSidebar, closeSidebar, fetchSingleProduct }}
+    >
       {children}
     </ProductsContext.Provider>
   )

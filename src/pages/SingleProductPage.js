@@ -15,6 +15,43 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 const SingleProductPage = () => {
+  // object with property with id that needs to be attached to the single product url
+  // console.log(useParams())
+  const { id } = useParams()
+  // look for push on this hook
+  const history = useHistory()
+  // grabbing information from products context
+  // coming from hook and just invoking
+  const {
+    single_product_loading: loading,
+    single_product_error: error,
+    single_product: product,
+    fetchSingleProduct,
+  } = useProductsContext()
+
+  // invoke when component mounts
+  useEffect(() => {
+    fetchSingleProduct(`${url}${id}`)
+  }, [id])
+  // console.log(product)
+
+  // if it ever hits an error, the app should bounce back to the home page after some time
+
+  useEffect(() => {
+    // console.log(error)
+    if (error) {
+      setTimeout(() => {
+        history.push('/')
+      }, 3000)
+    }
+  }, [error])
+
+  if (loading) {
+    return <Loading />
+  }
+  if (error) {
+    return <Error />
+  }
   return <h4>single product page</h4>
 }
 
