@@ -4,7 +4,9 @@ import GridView from './GridView'
 import ListView from './ListView'
 
 const ProductList = () => {
-  return <h4>product list</h4>
+  // invoke the filtercontext hook, giving filtered products alias of products
+  const { filtered_products: products } = useFilterContext()
+  return <GridView products={products}>product list</GridView>
 }
 
 export default ProductList
