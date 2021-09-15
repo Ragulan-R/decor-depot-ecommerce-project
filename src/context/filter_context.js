@@ -12,11 +12,26 @@ import {
 } from '../actions'
 import { useProductsContext } from './products_context'
 
-const initialState = {}
+const initialState = {
+  // array that will be always changing
+  filtered_products: [],
+  // the default array of products
+  all_products: [],
+}
 
 const FilterContext = React.createContext()
 
+// need to pass info from product context into filter context, cant just send it to filter reducer
+// cant just pass products into this state, need useEffect
 export const FilterProvider = ({ children }) => {
+  const { products } = useProductsContext()
+  const [state, dispatch] = useReducer(reducer, initialState)
+
+  // as we fetch the products we invoke dispatch with the same thing
+  useEffect(() => {
+    dispatch({ type: LOAD_PRODUCTS, payload: products })
+  }, [products])
+
   return (
     <FilterContext.Provider value='filter context'>
       {children}

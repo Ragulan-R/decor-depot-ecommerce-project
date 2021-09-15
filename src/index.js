@@ -9,8 +9,11 @@ import { UserProvider } from './context/user_context'
 import { Auth0Provider } from '@auth0/auth0-react'
 
 ReactDOM.render(
+  // pass information from products into filter
   <ProductsProvider>
-    <App />
+    <FilterProvider>
+      <App />
+    </FilterProvider>
   </ProductsProvider>,
 
   document.getElementById('root')
