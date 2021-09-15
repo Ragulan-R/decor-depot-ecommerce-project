@@ -65,6 +65,7 @@ const SingleProductPage = () => {
     // array that needs to be passed
     images,
   } = product
+
   return (
     <Wrapper>
       <PageHero title={name} product />
@@ -93,7 +94,8 @@ const SingleProductPage = () => {
               {company}
             </p>
             <hr />
-            {stock > 0 && <AddToCart />}
+            {/* passing all the properties */}
+            {stock > 0 && <AddToCart product={product} />}
           </section>
         </div>
       </div>

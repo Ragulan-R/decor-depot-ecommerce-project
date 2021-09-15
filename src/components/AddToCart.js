@@ -1,12 +1,45 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+// checkmark for the color selected
 import { FaCheck } from 'react-icons/fa'
+// where add to cart function is coming from
 import { useCartContext } from '../context/cart_context'
+// the plus and minus buttons
 import AmountButtons from './AmountButtons'
 
-const AddToCart = () => {
-  return <h4>addToCart </h4>
+const AddToCart = ({ product }) => {
+  // destructure the id, color, stock
+  const { id, colors, stock } = product
+  console.log(colors)
+  // 2 state values, 1 for the amount and 1 for colors
+  const [mainColor, setMainColor] = useState(colors[0])
+
+  return (
+    <Wrapper>
+      <div className='colors'>
+        <span>colors :</span>
+        <div>
+          {colors.map((color, index) => {
+            return (
+              <button
+                className={`${
+                  mainColor === color ? 'color-btn active' : 'color-btn'
+                }`}
+                key={index}
+                // background is now dynamic
+                style={{ background: color }}
+                onClick={() => setMainColor(color)}
+              >
+                {mainColor === color ? <FaCheck /> : null}
+              </button>
+            )
+          })}
+        </div>
+      </div>
+      <div className='btn-container'></div>
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled.section`
