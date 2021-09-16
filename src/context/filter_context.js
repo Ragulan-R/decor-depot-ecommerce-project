@@ -33,8 +33,18 @@ export const FilterProvider = ({ children }) => {
     dispatch({ type: LOAD_PRODUCTS, payload: products })
   }, [products])
 
+  // 2 functions to toggle the grid and list view
+  const setGridView = () => {
+    dispatch({ type: SET_GRIDVIEW })
+  }
+
+  const setListView = () => {
+    dispatch({ type: SET_LISTVIEW })
+  }
+
   return (
-    <FilterContext.Provider value={{ ...state }}>
+    // passing the 2 functions down
+    <FilterContext.Provider value={{ ...state, setGridView, setListView }}>
       {children}
     </FilterContext.Provider>
   )
