@@ -35,6 +35,11 @@ export const FilterProvider = ({ children }) => {
     dispatch({ type: LOAD_PRODUCTS, payload: products })
   }, [products])
 
+  // run everytime we change the sort parameters to
+  useEffect(() => {
+    dispatch({ type: SORT_PRODUCTS })
+  }, [products, state.sort])
+
   // 2 functions to toggle the grid and list view
   const setGridView = () => {
     dispatch({ type: SET_GRIDVIEW })
