@@ -10,13 +10,20 @@ import {
 } from '../actions'
 
 const filter_reducer = (state, action) => {
+  // there is two properties products and filtered products
+  // need to use spread operator because its pointing to all products, so if we filter it can't go back to the default since they are both stored in the same spot in the memory
   if (action.type === LOAD_PRODUCTS) {
-    // there is two properties products and filtered products
-    // need to use spread operator because its pointing to all products, so if we filter it can't go back to the default since they are both stored in the same spot in the memory
+    // min, max, price based on user selected
+    // p is product
+    let maxPrice = action.payload.map((p) => p.price)
+    // cant math max on array and need spread
+    maxPrice = Math.max(...maxPrice)
+    console.log(maxPrice)
     return {
       ...state,
       all_products: [...action.payload],
       filtered_products: [...action.payload],
+      filters: { ...state.filters, max_price: maxPrice, price: maxPrice },
     }
   }
   // toggling values and return specific states
