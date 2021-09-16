@@ -18,6 +18,8 @@ const initialState = {
   // the default array of products
   all_products: [],
   grid_view: true,
+  // matching one of the values of the select as default
+  sort: 'price-lowest',
 }
 
 const FilterContext = React.createContext()
@@ -42,9 +44,20 @@ export const FilterProvider = ({ children }) => {
     dispatch({ type: SET_LISTVIEW })
   }
 
+  // function to run when change in the input
+  const updateSort = (e) => {
+    // const name = e.target.name
+    const value = e.target.value
+    // console.log(name, value)
+    // passing whatever value we get from the select as a payload
+    dispatch({ type: UPDATE_SORT, payload: value })
+  }
+
   return (
     // passing the 2 functions down
-    <FilterContext.Provider value={{ ...state, setGridView, setListView }}>
+    <FilterContext.Provider
+      value={{ ...state, setGridView, setListView, updateSort }}
+    >
       {children}
     </FilterContext.Provider>
   )
