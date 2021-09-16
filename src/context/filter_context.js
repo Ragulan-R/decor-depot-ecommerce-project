@@ -46,9 +46,11 @@ export const FilterProvider = ({ children }) => {
   }, [products])
 
   // run everytime we change the sort parameters to
+  // filter then sort
   useEffect(() => {
+    dispatch({ type: FILTER_PRODUCTS })
     dispatch({ type: SORT_PRODUCTS })
-  }, [products, state.sort])
+  }, [products, state.sort, state.filters])
 
   // 2 functions to toggle the grid and list view
   const setGridView = () => {
@@ -68,10 +70,27 @@ export const FilterProvider = ({ children }) => {
     dispatch({ type: UPDATE_SORT, payload: value })
   }
 
+  // updating the filter filter
+  const updateFilters = (e) => {
+    let name = e.target.name
+    let value = e.target.value
+    console.log(name, value)
+    // only want to update a specific value in filter since it has many, unlike before where we just had the name
+    dispatch({ type: UPDATE_FILTERS, payload: { name, value } })
+  }
+  const clearFilters = () => {}
+
   return (
     // passing the 2 functions down
     <FilterContext.Provider
-      value={{ ...state, setGridView, setListView, updateSort }}
+      value={{
+        ...state,
+        setGridView,
+        setListView,
+        updateSort,
+        updateFilters,
+        clearFilters,
+      }}
     >
       {children}
     </FilterContext.Provider>

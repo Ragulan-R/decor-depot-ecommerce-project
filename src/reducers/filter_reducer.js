@@ -68,8 +68,18 @@ const filter_reducer = (state, action) => {
         return b.name.localeCompare(a.name)
       })
     }
-
     return { ...state, filtered_products: tempProducts }
+  }
+  if (action.type === UPDATE_FILTERS) {
+    // destructure both from the payload since passing as object
+    const { name, value } = action.payload
+    // update those values
+    // setting up dynamic properties since filters is an object
+    return { ...state, filters: { ...state.filters, [name]: value } }
+  }
+  if (action.type === FILTER_PRODUCTS) {
+    console.log('filtering the products')
+    return { ...state }
   }
 
   throw new Error(`No Matching "${action.type}" - action type`)
