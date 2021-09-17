@@ -75,6 +75,12 @@ export const FilterProvider = ({ children }) => {
     let name = e.target.name
     let value = e.target.value
     console.log(name, value)
+    // value is empty if i click a diff category, because cant access .value in btn, works in input
+    console.log(value)
+    if (name === 'category') {
+      // gets me text value inside the button
+      value = e.target.textContent
+    }
     // only want to update a specific value in filter since it has many, unlike before where we just had the name
     dispatch({ type: UPDATE_FILTERS, payload: { name, value } })
   }
