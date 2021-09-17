@@ -20,6 +20,17 @@ const Filters = () => {
     clearFilters,
     all_products,
   } = useFilterContext()
+
+  // get unique values
+  // 3 values, function needs to accept 2 parameters, 1) data coming in aka array 2) which item we are looking for
+  const categories = getUniqueValues(all_products, 'category')
+  const companies = getUniqueValues(all_products, 'company')
+  const colors = getUniqueValues(all_products, 'colors')
+
+  console.log(categories)
+  console.log(companies)
+  console.log(colors)
+
   return (
     <Wrapper>
       <div className='content'>
