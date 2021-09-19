@@ -81,6 +81,9 @@ export const FilterProvider = ({ children }) => {
       // gets me text value inside the button
       value = e.target.textContent
     }
+    if (name === 'color') {
+      value = e.target.dataset.color
+    }
     // only want to update a specific value in filter since it has many, unlike before where we just had the name
     dispatch({ type: UPDATE_FILTERS, payload: { name, value } })
   }
