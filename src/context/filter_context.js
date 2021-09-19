@@ -84,6 +84,9 @@ export const FilterProvider = ({ children }) => {
     if (name === 'color') {
       value = e.target.dataset.color
     }
+    if (name === 'price') {
+      value = Number(value)
+    }
     // only want to update a specific value in filter since it has many, unlike before where we just had the name
     dispatch({ type: UPDATE_FILTERS, payload: { name, value } })
   }
