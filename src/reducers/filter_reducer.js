@@ -78,8 +78,21 @@ const filter_reducer = (state, action) => {
     return { ...state, filters: { ...state.filters, [name]: value } }
   }
   if (action.type === FILTER_PRODUCTS) {
-    console.log('filtering the products')
-    return { ...state }
+    // need an array that holds the results of filter products
+    // also need all products - base of all the data types
+    const { all_products } = state
+    const { text, category, company, color, price, shipping } = state.filters
+    // before we filter anything, starting with a fresh copy of all products
+    let tempProducts = [...all_products]
+    if (text) {
+      tempProducts = tempProducts.filter((product) => {
+        return product.name.toLowerCase().startsWith(text)
+        // passing text coming from state
+      })
+    }
+
+    // once done filtering, setting filtered products to temp products
+    return { ...state, filtered_products: tempProducts }
   }
   // so min and max price shown as default prices
   if (action.type === CLEAR_FILTERS) {
