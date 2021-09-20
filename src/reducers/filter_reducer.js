@@ -81,7 +81,22 @@ const filter_reducer = (state, action) => {
     console.log('filtering the products')
     return { ...state }
   }
-
+  // so min and max price shown as default prices
+  if (action.type === CLEAR_FILTERS) {
+    return {
+      ...state,
+      filters: {
+        ...state.filters,
+        text: '',
+        company: 'all',
+        category: 'all',
+        color: 'all',
+        // setting price as default max price
+        price: state.filters.max_price,
+        shipping: false,
+      },
+    }
+  }
   throw new Error(`No Matching "${action.type}" - action type`)
 }
 

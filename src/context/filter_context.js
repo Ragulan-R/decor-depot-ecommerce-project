@@ -87,10 +87,17 @@ export const FilterProvider = ({ children }) => {
     if (name === 'price') {
       value = Number(value)
     }
+    if (name === 'shipping') {
+      value = e.target.checked
+    }
+    // similar issue like the button
+
     // only want to update a specific value in filter since it has many, unlike before where we just had the name
     dispatch({ type: UPDATE_FILTERS, payload: { name, value } })
   }
-  const clearFilters = () => {}
+  const clearFilters = () => {
+    dispatch({ type: CLEAR_FILTERS })
+  }
 
   return (
     // passing the 2 functions down
