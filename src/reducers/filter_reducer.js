@@ -83,12 +83,41 @@ const filter_reducer = (state, action) => {
     const { all_products } = state
     const { text, category, company, color, price, shipping } = state.filters
     // before we filter anything, starting with a fresh copy of all products
+
+    // ALWAYS START FROM SCRATCH
     let tempProducts = [...all_products]
     if (text) {
       tempProducts = tempProducts.filter((product) => {
         return product.name.toLowerCase().startsWith(text)
         // passing text coming from state
       })
+    }
+    // category ( filter only if category not "ALL")
+    if (category !== 'all') {
+      tempProducts = tempProducts.filter(
+        (product) => product.category === category
+      )
+    }
+    // company filtering
+    if (company !== 'all') {
+      tempProducts = tempProducts.filter(
+        (product) => product.company === company
+      )
+    }
+
+    // color filtering(colors is an array so need another callback)
+    if (color !== 'all') {
+      tempProducts = tempProducts.filter((product) => {
+        return product.color.find((c) => c === color)
+      })
+    }
+
+    // price filtering
+    tempProducts = tempProducts.filter((product) => product.price <= price)
+
+    // shipping filtering
+    if (shipping) {
+      tempProducts = tempProducts.filter((product) => product.shipping === true)
     }
 
     // once done filtering, setting filtered products to temp products
