@@ -12,7 +12,9 @@ ReactDOM.render(
   // pass information from products into filter
   <ProductsProvider>
     <FilterProvider>
-      <App />
+      <CartProvider>
+        <App />
+      </CartProvider>
     </FilterProvider>
   </ProductsProvider>,
 
