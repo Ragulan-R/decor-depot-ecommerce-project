@@ -10,20 +10,21 @@ import {
 // if already in cart, iterate over the cart, check where the item is via id and color, increase the amount
 // if it doesnt match, dont do anything and return to array
 // if amount bigger than max, set to max amount
+// handle add to cart action
+// get values from the payload
+// need to check if item is already in the cart
+// same item but maybe different colors
+// need to confim the stock quantity, so if user keeps adding more of the same it will cap off at 6
 
 const cart_reducer = (state, action) => {
-  // handle add to cart action
   if (action.type === ADD_TO_CART) {
-    // get values from the payload
     const { id, color, amount, product } = action.payload
-    // need to check if item is already in the cart
-    // same item but maybe different colors
     const tempItem = state.cart.find((i) => i.id === id + color)
     if (tempItem) {
+      // new array
       const tempCart = state.cart.map((cartItem) => {
         if (cartItem.id === id + color) {
           let newAmount = cartItem.amount + amount
-          // need to confim the stock quantity, so if user keeps adding more of the same it will cap off at 6
           if (newAmount > cartItem.max) {
             newAmount = cartItem.max
           }
@@ -39,7 +40,7 @@ const cart_reducer = (state, action) => {
         name: product.name,
         color,
         amount,
-        image: product.image[0].url,
+        image: product.images[0].url,
         price: product.price,
         max: product.stock,
       }
