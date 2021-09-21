@@ -37,11 +37,15 @@ export const CartProvider = ({ children }) => {
     dispatch({ type: ADD_TO_CART, payload: { id, color, amount, product } })
   }
   // remove items
-  const removeItem = (id) => {}
+  const removeItem = (id) => {
+    dispatch({ type: REMOVE_CART_ITEM, payload: id })
+  }
   // toggle amounts
   const toggleAmount = (id, value) => {}
   // clear cart items
-  const clearCart = () => {}
+  const clearCart = () => {
+    dispatch({ type: CLEAR_CART })
+  }
 
   // invoke everytime there is a change in the cart
   // can only store strings
