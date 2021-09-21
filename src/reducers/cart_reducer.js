@@ -85,7 +85,25 @@ const cart_reducer = (state, action) => {
     })
     return { ...state, cart: tempCart }
   }
-
+  // Handle the amount change dispatch
+  if (action.type === COUNT_CART_TOTALS) {
+    const { total_items, total_amount } = state.cart.reduce(
+      (total, cartItem) => {
+        // price and amount coming from cart item
+        const { amount, price } = cartItem
+        total.total_items += amount
+        total.total_amount += price * amount
+        // always need a return with reduce
+        return total
+      },
+      {
+        total_items: 0,
+        total_amount: 0,
+      }
+    )
+    // change to props, names match so written short hand for total items and total amount
+    return { ...state, total_items, total_amount }
+  }
   // return state
   throw new Error(`No Matching "${action.type}" - action type`)
 }

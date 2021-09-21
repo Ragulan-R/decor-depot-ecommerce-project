@@ -53,6 +53,8 @@ export const CartProvider = ({ children }) => {
   // invoke everytime there is a change in the cart
   // can only store strings
   useEffect(() => {
+    // change display based on cart changes
+    dispatch({ type: COUNT_CART_TOTALS })
     localStorage.setItem('cart', JSON.stringify(state.cart))
   }, [state.cart])
 
