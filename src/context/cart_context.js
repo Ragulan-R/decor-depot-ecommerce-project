@@ -8,8 +8,20 @@ import {
   COUNT_CART_TOTALS,
 } from '../actions'
 
+// check local storage (browser api)
+const getLocalStorage = () => {
+  let cart = localStorage.getItem('cart')
+  // if something there
+  if (cart) {
+    return JSON.parse(localStorage.getItem('cart'))
+  } else {
+    return []
+  }
+}
+
 const initialState = {
-  cart: [],
+  // cart: [],
+  cart: getLocalStorage(),
   total_items: 0,
   total_amount: 0,
   shipping: 100,
@@ -30,6 +42,12 @@ export const CartProvider = ({ children }) => {
   const toggleAmount = (id, value) => {}
   // clear cart items
   const clearCart = () => {}
+
+  // invoke everytime there is a change in the cart
+  // can only store strings
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(state.cart))
+  }, [state.cart])
 
   return (
     <CartContext.Provider
