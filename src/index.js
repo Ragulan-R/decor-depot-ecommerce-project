@@ -8,15 +8,28 @@ import { CartProvider } from './context/cart_context'
 import { UserProvider } from './context/user_context'
 import { Auth0Provider } from '@auth0/auth0-react'
 
+// domain- dev-03xvpkpl.us.auth0.com
+// client id - rMfmb5uowRQSr852jcEPWa8WvtCvJm7E
+// auth has access to isLoading, error
+
 ReactDOM.render(
   // pass information from products into filter
-  <ProductsProvider>
-    <FilterProvider>
-      <CartProvider>
-        <App />
-      </CartProvider>
-    </FilterProvider>
-  </ProductsProvider>,
+  <Auth0Provider
+    domain='dev-03xvpkpl.us.auth0.com'
+    clientId='rMfmb5uowRQSr852jcEPWa8WvtCvJm7E'
+    redirectUri={window.location.origin}
+    cacheLocation='localstorage'
+  >
+    <UserProvider>
+      <ProductsProvider>
+        <FilterProvider>
+          <CartProvider>
+            <App />
+          </CartProvider>
+        </FilterProvider>
+      </ProductsProvider>
+    </UserProvider>
+  </Auth0Provider>,
 
   document.getElementById('root')
 )
