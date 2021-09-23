@@ -4,8 +4,8 @@ import { useAuth0 } from '@auth0/auth0-react'
 const UserContext = React.createContext()
 export const UserProvider = ({ children }) => {
   // invoke autho0 hook
-  const { isAuthenticated, loginWithRedirect, logout, user, isLoading } =
-    useAuth0()
+  // isAuthenticated, isLoading removed from the destructure
+  const { loginWithRedirect, logout, user } = useAuth0()
 
   // state
   const [myUser, setMyUser] = useState(null)
@@ -16,12 +16,16 @@ export const UserProvider = ({ children }) => {
     // console.log(`'user:${user}`)
     // console.log(`'isAuthenticated':${isAuthenticated}`)
     // console.log(`'isLoading':${isLoading}`)
-    if (isAuthenticated) {
-      setMyUser(user)
-    } else {
-      setMyUser(false)
-    }
-  }, [isAuthenticated])
+    // if (isAuthenticated) {
+    //   setMyUser(user)
+    // } else {
+    //   setMyUser(false)
+    // }
+
+    setMyUser(user)
+  }, [user])
+
+  // isAuthenticated
 
   return (
     <UserContext.Provider value={{ loginWithRedirect, logout, myUser }}>
