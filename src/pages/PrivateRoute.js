@@ -1,10 +1,23 @@
-import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
-import { useAuth0 } from '@auth0/auth0-react';
+import React from 'react'
+import { Route, Redirect } from 'react-router-dom'
+import { useAuth0 } from '@auth0/auth0-react'
 // will remove later
-import { useUserContext } from '../context/user_context';
+import { useUserContext } from '../context/user_context'
 
-const PrivateRoute = () => {
-  return <h4>Private Route</h4>;
-};
-export default PrivateRoute;
+// rest operator - gathering exact path checkout
+// redirects user to home page if they try to manually type checkout in the address bar
+const PrivateRoute = ({ children, ...rest }) => {
+  // console.log(children)
+  // console.log(rest)
+  const { myUser } = useUserContext()
+  // spread operator
+  return (
+    <Route
+      {...rest}
+      render={() => {
+        return myUser ? children : <Redirect to='/'></Redirect>
+      }}
+    ></Route>
+  )
+}
+export default PrivateRoute
