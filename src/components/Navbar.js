@@ -11,6 +11,8 @@ import { useUserContext } from '../context/user_context'
 
 const Nav = () => {
   const { openSidebar } = useProductsContext()
+  // if user exists show the checkout option
+  const { myUser } = useUserContext()
 
   return (
     <NavContainer>
@@ -35,6 +37,12 @@ const Nav = () => {
               </li>
             )
           })}
+          {/*// if user exists show the checkout option  */}
+          {myUser && (
+            <li>
+              <Link to='/checkout'>Checkout</Link>
+            </li>
+          )}
         </ul>
         <CartButtons />
       </div>

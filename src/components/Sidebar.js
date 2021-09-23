@@ -15,6 +15,8 @@ const Sidebar = () => {
   // console.log(data)
 
   const { isSidebarOpen, closeSidebar } = useProductsContext()
+  // checkout
+  const { myUser } = useUserContext()
 
   const isOpen = false
 
@@ -40,11 +42,14 @@ const Sidebar = () => {
               </li>
             )
           })}
-          <li>
-            <Link to='/checkout' onClick={closeSidebar}>
-              checkout
-            </Link>
-          </li>
+          {/* checkout, render if user exists */}
+          {myUser && (
+            <li>
+              <Link to='/checkout' onClick={closeSidebar}>
+                checkout
+              </Link>
+            </li>
+          )}
         </ul>
         <CartButtons />
       </aside>
