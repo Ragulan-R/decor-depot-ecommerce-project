@@ -10,12 +10,11 @@ const Hero = () => {
     <Wrapper className='section-center'>
       <article className='content'>
         <h1>
-          Create your perfect <br /> living space.
+          Craft your perfect <br /> living space.
         </h1>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum,
-          veritatis dolorum. Eos id totam eaque alias quidem illum architecto
-          tempora?
+          Find beautifully designed pieces that are stylish, comfortable and
+          affordable.
         </p>
         <Link to='/products' className='btn hero-btn'>
           Shop Now
