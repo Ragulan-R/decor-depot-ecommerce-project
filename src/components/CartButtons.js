@@ -84,6 +84,7 @@ const Wrapper = styled.div`
     padding: 12px;
   }
   .auth-btn {
+    font-family: 'Spartan', sans-serif;
     display: flex;
     align-items: center;
     background: transparent;

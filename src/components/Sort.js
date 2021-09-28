@@ -110,6 +110,7 @@ const Wrapper = styled.section`
     font-size: 1rem;
     text-transform: capitalize;
     padding: 0.25rem 0.5rem;
+    font-family: 'Spartan', sans-serif;
   }
   label {
     font-size: 1rem;
