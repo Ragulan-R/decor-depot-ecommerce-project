@@ -15,19 +15,18 @@ const AboutPage = () => {
             <div className='underline'></div>
           </div>
           <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-            Praesentium quo dolorem voluptas dignissimos quibusdam repellendus
-            aliquid ab impedit ipsam consequuntur?
+            Decor Depot is committed to providing customers with the best
+            shopping experience possible.
           </p>
           <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-            Praesentium quo dolorem voluptas dignissimos quibusdam repellendus
-            aliquid ab impedit ipsam consequuntur?
+            We offer a wide selection of home furnishings, interior design, and
+            décor items at affordable prices.
           </p>
+          <p>Create your dream home.</p>
           <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-            Praesentium quo dolorem voluptas dignissimos quibusdam repellendus
-            aliquid ab impedit ipsam consequuntur?
+            Whether you’re looking for a trendy sofa to spruce up your living
+            room or a sleek coffee table to bring your room to life, you are
+            sure to find it at Decor Depot.
           </p>
         </article>
       </Wrapper>
