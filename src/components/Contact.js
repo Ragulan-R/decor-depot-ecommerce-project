@@ -8,10 +8,9 @@ const Contact = () => {
         <h3>Subscribe to our weekly newsletter and get 10% off</h3>
         <div className='content'>
           <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam
-            quidem amet vitae perspiciatis, eos iste dicta fugit sapiente sunt
-            ipsam molestiae voluptatum impedit voluptas natus pariatur mollitia
-            ullam neque quae.
+            Be updated on the latest releases for the season and get be the
+            first to know about any special sales! Our stylist curate a list
+            from products around the world to spark inspiration.
           </p>
           <form
             action='https://formspree.io/f/mdoybnrd'

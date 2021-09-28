@@ -18,7 +18,7 @@ const Sidebar = () => {
   // checkout
   const { myUser } = useUserContext()
 
-  const isOpen = false
+  // const isOpen = false
 
   return (
     <SidebarContainer>

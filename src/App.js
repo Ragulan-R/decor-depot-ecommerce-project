@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { Navbar, Sidebar, Footer } from './components'
 // will be on all pages
-import styled from 'styled-components'
+// import styled from 'styled-components'
 import {
   Home,
   Products,

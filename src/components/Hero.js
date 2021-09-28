@@ -2,8 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 // link to the products page
 import { Link } from 'react-router-dom'
-import heroBcg from '../assets/hero-bcg.jpeg'
-import heroBcg2 from '../assets/hero-bcg-2.jpeg'
+import heroImg from '../assets/heroImage.jpg'
+// import heroBcg2 from '../assets/hero-bcg-2.jpeg'
 
 const Hero = () => {
   return (
@@ -21,8 +21,8 @@ const Hero = () => {
         </Link>
       </article>
       <article className='img-container'>
-        <img src={heroBcg} alt='' className='main-img' />
-        <img src={heroBcg2} alt='' className='accent-img' />
+        <img src={heroImg} alt='' className='main-img' />
+        {/* <img src={heroBcg2} alt='' className='accent-img' /> */}
       </article>
     </Wrapper>
   )
@@ -80,11 +80,11 @@ const Wrapper = styled.section`
     .img-container::before {
       content: '';
       position: absolute;
-      width: 10%;
-      height: 80%;
+      width: 100%;
+      height: 100%;
       background: var(--clr-primary-9);
-      bottom: 0%;
-      left: -8%;
+      bottom: 10%;
+      left: -10%;
       border-radius: var(--radius);
     }
   }
